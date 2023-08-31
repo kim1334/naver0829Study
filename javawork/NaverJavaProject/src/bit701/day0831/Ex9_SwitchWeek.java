@@ -25,6 +25,12 @@ public class Ex9_SwitchWeek {
 		
 		int days = 0;
 		boolean b = year%4==0 && year%100 !=0 || year%400==0;
+		// 위와 같은 공식이 나오는 이유는 태양년의 길이와 연도의 길이를 맞추기 위해서 있다
+		// 윤년은 4로 나누어지고 100으로 나누어지면 안된다
+		// 윤년은 100으로 나누어지고 400으로 나누어지면 윤년이 된다
+		// 그 이유는 태양녀의 길이와 관련이 있다 인간 사회의 연도와 계절에 따른 태양년의
+		// 연도를 최대한 일치시키기 위함이다.
+		
 //		if(b==true) System.out.println("윤년");
 		if(b) System.out.println("윤년"); // 조건에서 true는 생략가능b==false 는 !b로 주로 사용 
 		else System.out.println("평년");
