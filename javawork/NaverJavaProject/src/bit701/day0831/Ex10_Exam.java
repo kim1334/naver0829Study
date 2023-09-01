@@ -1,5 +1,6 @@
 package bit701.day0831;
 
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 public class Ex10_Exam {
@@ -35,6 +36,11 @@ public class Ex10_Exam {
 			System.out.println("5개 이상 10프로 할인된 금액 : " + price);	
 		} else {
 			System.out.println("미안합니다 할인 대상이 아닙니다");
+			
+			
+
+			
+		
 		}
 	}
 
