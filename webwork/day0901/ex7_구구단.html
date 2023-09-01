@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .s{
+            display: inline-block;
+            text-align: center;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 
+        start와 end값을 입력받아 해당 구구단을 출력하시오
+        가로방향으로 자바에서 처럼.
+        단 start가 end보다 클경우 두 값을 서로 바꾼 후 출력 하시오
+     -->
+     <script>
+        let start = prompt("첫 구구단 값을 입력해 주세요");
+        let end = prompt("끝 구구단 값을 입력해 주세요")
+
+        if(start>end){
+            let them = start;
+            start = end;
+            end = them;
+        }
+
+        for(let dan=start; dan<=end; dan++){
+            document.write(`<span class="s">**${dan}단**</span>`);
+        }
+        document.write(`<br>`)
+
+
+        
+        for(let i=1; i<=9; i++){
+            for(let dan=start; dan<=end; dan++){
+                
+                document.write(`<span class="s">${dan} x ${i} = ${dan*i}</span>`)
+            }
+            document.write(`<br>`);
+        }
+     </script>
+    
+</body>
+</html>

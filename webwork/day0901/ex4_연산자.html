@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산짱</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Nanum+Pen+Script&family=Russo+One&family=Single+Day&display=swap" rel="stylesheet">
+    <style>
+        body *{  /* body의 모든 하위태그 */
+            font-size: 30px;
+            font-family: 'Jua';
+        }
+    </style>
+</head>
+<body>
+    
+<script>
+    let su1 = prompt("숫자 1 입력",10);
+    let su2 = prompt("숫자 2 입력",20);
+    console.log("su1="+typeof(su1)); // 내부적으로 어떤 타입으로 저장되어있는지 확인
+    console.log("su2="+typeof(su2)); // 둘다 String 이다 (String 일 경우 + 만 나열됨 나머지 연산은 잘 됨)
+    
+    // 파스 인트는 무조건 정수로만 바꾸는 것 실수로 바꾸는 게 아니다잉
+    
+    //let add = parseInt(su1)+parseInt(su2); // 정수타입으로 변환 후 계산.
+    let add = Number(su1)+Number(su2); // 넘버는 정수든 실수든 문자열을 숫자타입으로 변환
+    let sub = su1-su2;
+    let mul = su1*su2;
+    let div = su1/su2;
+
+   let s = `<b>add=${add}<br>sub=${sub}<br>mul=${mul}<br>div=${div}<br>`;
+
+    document.write(s);
+
+</script>
+
+</body>
+</html>

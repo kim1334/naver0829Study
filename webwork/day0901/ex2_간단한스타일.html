@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Nanum+Pen+Script&family=Russo+One&family=Single+Day&display=swap" rel="stylesheet">
+    <!-- 문서 삽이형 스타일 적용 -->
+    <style>
+        /* style 영역에서의 주석처리 */
+        span{
+            font-family: 'Russo One';
+        }
+        .one{ /* 태그 상관없이 class 명이 one인 경우 모두 적용 */
+            font-size: 30px; 
+
+        }
+        /* calss : . , Id : # 으로 스타일 적용 */
+
+        div.one{  /*div 태그의 one class 에만 적용 */
+            color: red;
+        }
+
+        .two,span.three{ /* 클래스가 two인 모두 태그 그리고 span 태그중 class 가 three인 경우 에 적용 */
+            background: greenyellow;
+        }
+
+        /* div 태그중 클래스명이 one,three인 경우에만 border 적용 */
+        div.one,div.three{
+            border: 5px solid darkgreen; /* 굵기 선 종류 색상 : 따로줘도 되고 같이 줘도 됨 */
+        }
+        /* border 속성을 각각 따로 주고자할 경우 */
+        h1{
+            border-width: 10px;
+            border-style: double;
+            border-color: mediumvioletred
+            border-radius: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 스타일 정의 : 태그 삽입형 -->
+    <h1 style="color:purple; font-family:'Gamja Flower'; background-color: #ffccff;">오늘 날씨가 좋아요!</h1>
+    <h1 style="color:rgb(200, 100, 165); font-family: 'Russo One'; background-color: rgba(255, 234, 200,0.5);">Have a Good Day</h1>
+
+    <span class="one">Java</span>
+    <span class="two">HTML</span>
+    <span class="three">JavaScript</span>
+    <hr>
+    <div class="one">소나타</div>
+    <div class="two">그랜져</div>
+    <div class="three">벤츠</div>
+
+
+</body>
+</html>
