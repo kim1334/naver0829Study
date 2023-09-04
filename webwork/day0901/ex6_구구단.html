@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+    h3.title{
+        color:blueviolet;
+        background-color: aquamarine;
+        width: 300px;
+        padding-left: 150px;
+    
+   
+    }
+
+    h4{
+        color: rgb(72, 204, 39);
+        font-family: 'Comic Sans MS';
+        margin-left: 100px; /*태그 바깥쪽 여백*/
+        
+    }
+</style>
+
+
 </head>
 <body>
     
@@ -11,7 +31,7 @@
     <!-- 구구단 숫자 2~9까지 입력을 받아서 해당 구구단을 출력하시오 -->
     <!-- 단 2~9 사이의 값이 아닐 경우 '이미지(아무거나) 출력하기' -->
 
-    <script>
+    <!-- <script>
         let dan = prompt("원하는 구구단을 입력하세요");
         document.write(`<h3>dan = ${dan}</h3>`);
 
@@ -23,7 +43,28 @@
             document.write(`<b>${dan} x ${i} = ${dan*i}</b><br>`)
         }
         
-    </script>
+    </script> -->
+
+    <!-- //선생님이 풀어주신 문제 -->
+
+<script>
+    let dan = Number(prompt("출력할 구구단을 입력하세요"));
+    console.log(typeof(dan));
+
+    if(dan<2 || dan>9){
+        document.write("<img alt='사진' src='../mycar/mycar7.png' width=200>")
+    }else{
+        let s = "<h3 class='title'> ** " +dan+ "단 **</h3><br><br>";
+        for(let i=1; i<=9; i++){
+            s += `<h4>${dan} x ${i} = ${dan*i}</h4>`;
+        }
+        document.write(s);
+    }
+
+ </script>
+ 
+
+
     
 </body>
 </html>

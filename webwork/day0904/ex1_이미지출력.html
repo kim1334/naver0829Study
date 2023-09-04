@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미징출력</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Nanum+Pen+Script&family=Russo+One&family=Single+Day&display=swap" rel="stylesheet">
+
+    <style>
+        figure{
+            float: left;
+    
+        }
+        /* 공백 : 모든 하위태그,  > : 바로 아래의 태그 의미 */
+        figure>img{
+            width: 130px;
+            height: 160px;
+            border: 3px inset gray;
+        }
+
+        /* figure>figcaption>h3>b{ 태그가 많을 땐 정확한 경로 지정해주는 게 좋음*/
+            figure b{
+            font-family: 'jua';
+            margin-left: 50px;
+            color: green;    
+        }
+    </style>
+</head>
+<body>
+
+    <img src="../mycar/mycar11.png" alt="자동차" width="150">
+    <img src="../mycar/mycar5.png" alt="자동차" width="150">
+    <img src="../mycar/mycar7.png" alt="자동차" width="150">
+    <br>
+    <b>노랑차</b>
+    <b>초록미니</b>
+    <b>노랑미니</b>
+    <hr>
+    <figure>
+        <img src="../연예인사진/14.jpg" alt="연옌사진" >
+        <figcaption>
+            <h3><b>유승호</b></h3>
+        </figcaption>
+    </figure>
+    <figure>
+        <img src="../연예인사진/6.jpg" alt="연옌사진" >
+        <figcaption>
+            <h3><b>한예슬</b></h3>
+        </figcaption>
+    </figure>
+</body>
+</html>

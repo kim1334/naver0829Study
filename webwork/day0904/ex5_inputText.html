@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Nanum+Pen+Script&family=Russo+One&family=Single+Day&display=swap" rel="stylesheet">
+
+    <style>
+        div#msg{
+            font-family: 'Gamja Flower';
+            font-size: 30px;
+            margin-top: 30px;
+            color: palevioletred;
+        }
+    </style>
+</head>
+<body>
+
+
+    <input type="text" name="" id="txtmsg">
+    <input type="button" id="bth1" value="읽기">
+    <div id="msg">Message 출력되는 곳</div>
+
+
+    <script>
+        let t = document.getElementById("txtmsg");
+        let b = document.getElementById("bth1");
+        let msg = document.getElementById("msg");
+
+        //버튼 이벤트 : 버튼 클릭시 해당 함수 호출
+        b.onclick = function(){
+            //입력한 문자열을 가져온다
+            let data = t.value;
+            
+            //msg에 출력
+            //msg.innerText = "<u>"+data+"</u>"; // innerText 는 태그도 그대로 문자열로 출력.
+            //msg.innerHTML = "<u>"+data+"</u>"; // 태그 적용 시키려면 이너 HTML써야함.
+
+            msg.innerHTML += "<br><u>"+data+"</u><br>";
+            // += 으로 작성시에 기존 값들은 유지되면서 출력된다
+
+            
+            //입력한 값을 지운후 포커스를 준다
+            t.value = "";
+            t.focus();
+
+        }
+
+    </script>
+    
+</body>
+</html>

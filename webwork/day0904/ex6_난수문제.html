@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Nanum+Pen+Script&family=Russo+One&family=Single+Day&display=swap" rel="stylesheet">
+
+
+    <!-- 새로운 난수 구하기
+          인풋       ok버튼
+           div입력창   
+        정답입니다.  
+        자동차가 1~15사이 car 사진으로 변경 -->
+
+        <style>
+            div#msg{
+                font-family: 'Gamja Flower';
+                font-size: 40px;
+                color: coral;
+            }
+        </style>
+</head>
+<body>
+
+    <input type="button"  id="btnrnd" value="새로운 난수 발생하기">
+    <br>
+    <input type="text" id="txt1" >
+    <input type="button" value="ok" id="bth1">
+    <div id="msg">메세지 출력란</div>
+    
+
+    <script>
+        let t = document.getElementById("txt1");
+        let b = document.getElementById("btnrnd");
+        let msg = document.getElementById("msg");
+
+        let rnd; // 난수를 구할 변수
+        //난수 버튼 이벤트
+        document.getElementById("btnrnd").onclick = function(){
+            // 1~100사이의 난수 구하기
+            rnd = parseInt(Math.random()*100)+1;
+            console.log(rnd);
+
+       
+
+
+     }
+    </script>
+    
+</body>
+</html>

@@ -10,16 +10,26 @@
             text-align: center;
             width: 100px;
         }
+
+        div.gugu{
+            float: left;  /* 태그를 우측방향으로 나열 */
+            width: 150px;
+            font-family: 'Impact';
+        }
+
     </style>
 </head>
 <body>
+
+
+    <h2>구구단 출력하기 (다중for문) 연습</h2>
 
     <!-- 
         start와 end값을 입력받아 해당 구구단을 출력하시오
         가로방향으로 자바에서 처럼.
         단 start가 end보다 클경우 두 값을 서로 바꾼 후 출력 하시오
      -->
-     <script>
+     <!-- <script>
         let start = prompt("첫 구구단 값을 입력해 주세요");
         let end = prompt("끝 구구단 값을 입력해 주세요")
 
@@ -42,8 +52,34 @@
                 document.write(`<span class="s">${dan} x ${i} = ${dan*i}</span>`)
             }
             document.write(`<br>`);
-        }
-     </script>
+        }  !-->
+
+
+        <!-- 선생님 해설입니당 -->
+        <script>
+            let start = Number(prompt("구구단을 출력할 시작단 입력"));
+            let end = Number(prompt("구구단을 출력할 끝단 입력"));
+            
+            //start가 end보다 클 경우 두값 서로 바꾸기
+            if(start>end){
+                let temp = start;
+                start = end;
+                end = temp;
+            }
+            document.write(`<h2>start = ${start}, end = ${end}</h2>`)
+            let s="";
+
+            for(let i=1; i<=9; i++){
+                for(let dan=start; dan<=end; dan++){
+                    s += `<div class="gugu">${dan} x ${i} = ${dan*i}</div>`
+                }
+                s+="<br>";
+            }
+            document.write(s);
+        </script>
+        
+
+     
     
 </body>
 </html>

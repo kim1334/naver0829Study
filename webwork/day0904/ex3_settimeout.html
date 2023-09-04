@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            //alert("안녕하세요");
+            
+            //사진의 요소값을 얻는다
+            let photo = document.getElementById("myphoto");
+            //사진의 src 속성을 변경한다
+            // photo.setAttribute("src","../연예인사진/15.jpg"); // 바로적용
+        
+            //3초후 설현 사진으로 변경을 하고 싶은 경우
+            //3초후 딱 한번 function이 호출된다.
+
+            setTimeout(function(){
+                photo.setAttribute("src","../연예인사진/15.jpg");
+            },3000);
+         //setAttribute 로 속성을 변경할 수 있다 기억
+
+         //5초후 다시 박보영 사진으로 변경
+         setTimeout(function(){
+                photo.setAttribute("src","../연예인사진/12.jpg");
+            },5000);
+        }
+
+
+        // window.onunload = function(){
+        //     alert("안녕히 가세요");
+        // }
+
+    </script>
+</head>
+<body>
+    
+    <img src="../연예인사진/12.jpg" alt="" width="200" id="myphoto">
+
+</body>
+</html>
