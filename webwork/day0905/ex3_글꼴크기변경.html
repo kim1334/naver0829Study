@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Nanum+Pen+Script&family=Russo+One&family=Single+Day&display=swap" rel="stylesheet">
+
+    <style>
+        #message{
+            font-family: 'Gamja Flower';
+            background-color: #cfcfcc;
+            color: palevioletred;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            width: 500px;
+            height: 150px;
+            box-shadow: 5px 5px 5px pink;
+            text-align: center;
+            line-height: 150px; /*한줄일 경우 행높이를 height 하고 같은 값을 주면 세로방향 가운데 온다*/
+            
+        }
+
+        #buttons{
+            position: absolute;
+            left: 200px;
+            top: 300px;
+        }
+
+        #buttons button{
+            width: 60px;
+            height: 60px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="message" style="font-size: 30px;">Have a Nice Day!!!</div>
+    <div id="buttons">
+         <button type="button" id="btnminus">-</button>
+         <button type="button" id="btnplus">+</button>
+    </div>
+
+    <script>
+        //+ 버튼
+        document.getElementById("btnplus").onclick= function(){
+            //현재 글꼴의 크기를 얻어보자
+            let m = document.getElementById("message");
+           // alert(m.style.fontSize); : 30px
+           
+           let fs = parseInt(m.style.fontSize,10); // 10진수로 숫자부분만 가져온다.
+           //alert(fs); // 픽셀을 제거하고 30으로 출력 숫자 부분만 가져와야 계산이 가능하다.
+
+           //얻어온 글꼴 크기에 3을 증가.  -fs가 70보다 작은 경우에만 변경
+           
+           if(fs<70){
+           fs += 3;
+           console.log(fs);
+           //글꼴 스타일 변경
+           m.style.fontSize = fs+"px";
+           }else {
+            alert("더이상 증가할 수 없습니다.")
+           }
+
+        }
+            // - 버튼
+        document.getElementById("btnminus").onclick = function(){
+            let m = document.getElementById("message")
+
+            let fs = parseInt(m.style.fontSize,10);
+            //alert(fs);
+
+            if(fs>5){
+            fs -= 3;
+
+            m.style.fontSize = fs+"px";
+            }else{
+                alert("더이상 줄일 수 없습니다.")
+            }
+        }
+    </script>
+</body>
+</html>

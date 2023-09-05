@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+        <h3>숫자를 입력하면 그 숫자만큼 행,열로 별표 출력하기</h3>
+        <input type="text"  id="su1" size="3">
+        <div style="margin-top: 30px; font-size: 25px;" id="result">111</div>
+        
+        <script>
+            document.getElementById("su1").onkeyup=function(e){
+                console.log(this.value); //this : 자기 자신의 요소값  (값을 가져오는 방법 1)
+                console.log(e.target.value); // 타겟은 이벤트가 발생하는 대상 요소. target(자기자신)이 입력한 요소값 (값을 가져오는 방법 2)
+                console.log(e.keyCode); // 엔터를 누르면 13이 출력되는 걸 알 수 있다. 즉 아스키코드를 확인할 수 있다는 것,
+                
+                // 숫자를 입력후 엔터를 누르면 그 숫자만큼 행,열로 별표를 출력한다
+                if(e.keyCode==13){ // 반드시 C는 대문자이다.
+                    //입력한 숫자
+                    let su = Number(e.target.value);
+
+                    let s = "";
+                    for(let i=1; i<=su; i++){
+                        for(let j=1; j<=su; j++){
+                            s +="☆";
+                        }
+                        s +="<br>";
+                    }
+                    document.getElementById("result").innerHTML = s;
+                    // 입력한 값 지우기
+                    this.value = "";
+                    
+                    // 포커스 주기
+                    this.focus();
+                }
+            }
+        </script>
+        
+</body>
+</html>
