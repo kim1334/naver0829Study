@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+    <style>
+        body * {
+            font-family: 'Jua';
+        }
+        div.box{
+
+
+            background-color: dodgerblue;
+            float: left;
+            width: 70px;
+            height: 70px;
+            text-align: center;
+            line-height: 70px;
+            border-radius: 50%;
+            font-size: 40px;
+            margin: 30px
+         
+
+
+
+        
+        }
+        button#bth1{
+            font-size: 20px;
+            background-color:aquamarine;
+            border-radius: 10px;
+            height: 60px;
+            width: 200px;
+            margin: auto;
+            display: block;
+            margin-top: 150px;
+      
+        }
+        div#hdiv{
+        width: 800px;
+        height: 130px;
+        background-color: aliceblue;
+        border-radius: 50px;
+        margin: 0 auto;
+        padding-top: 1px;
+        position: relative; 
+        top: 140px;
+        }
+        h2{
+            text-align: center;
+     
+        }
+        #he{
+            background-color:cadetblue;
+            height: 400px;
+            width: 1000px;
+            margin: 0 auto;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            
+        //여러개 class 요소들을 배열 변수로 얻는다
+        //querySelectorAll : 실제 배열이라고는 할 수 없지만 NodeList에 저장하여 배열과 비슷한 작업을 수행할 수 있음.
+            let box = document.querySelectorAll("div.box");
+            console.log(box.length);
+
+
+
+
+
+
+            document.getElementById("bth1").onclick = function(){
+            for(let i=0;i<box.length;i++){
+                box[i].innerHTML = parseInt(Math.random()*45)+1;
+                    for(let j=0; j<i; j++){ // 중복 제거하는 코드문
+                       if(parseInt(box[i].innerHTML) == parseInt(box[j].innerHTML)){ 
+                            i--;
+                            continue; 
+                    }
+                }
+            } // <-- 난수할당, 중복제거 반복 코드블록 끝
+            
+            
+            
+            
+            
+            
+            //오름,내림차순
+             for(let i=0; i<box.length-1; i++){
+                for(let j=i+1; j<box.length; j++){
+                    let ni = parseInt(box[i].innerHTML)
+                    let nj = parseInt(box[j].innerHTML)
+                    
+                        if(ni>nj){
+                            let them = box[i].innerHTML;
+                            box[i].innerHTML = box[j].innerHTML;
+                            box[j].innerHTML = them;
+                    }   
+                }
+            } // <-- 오름,내림차순 반복 코드블록 끝
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        }
+        
+        //오름,내림차순
+            for(let i=0; i<box.length-1; i++){
+                for(let j=i+1; j<box.length; j++){
+                    let ni = parseInt(box[i].innerHTML)
+                    let nj = parseInt(box[j].innerHTML)
+                    
+                        if(ni>nj){
+                            let them = box[i].innerHTML;
+                            box[i].innerHTML = box[j].innerHTML;
+                            box[j].innerHTML = them;
+                    }   
+                }
+            } // <-- 오름,내림차순 반복 코드블록 끝
+        
+            /* 날짜 */
+                let date = new Date();
+                let y = date.getFullYear();
+                let m = date.getMonth()+1;
+                let d = date.getDate();
+
+                time.innerHTML = `${y}-${m}-${d}`;
+            /* 날짜 */
+}
+    </script>
+</head>
+<body>
+<div id="he">
+    <h2 style="color: blue;">1023회
+        <span id="time" style="font-size: 15px; color: black;" >xxxx-xx-xx</span>
+    </h2>
+
+    <div id="hdiv">
+        <div class="box" style="background-color: cornflowerblue;"></div>
+        <div class="box" style="background-color: darkgoldenrod;"></div>
+        <div class="box" style="background-color: darksalmon;"></div>
+        <div class="box" style="background-color: dodgerblue;"></div>
+        <div class="box" style="background-color: rgb(34, 205, 0);"></div>
+        <div class="box" style="background-color: rgb(34, 205, 0);"></div>
+        <br><br><br><br>
+    </div>
+<button type="button" id="bth1" >제발 1등</button>
+</div>
+
+
+    
+</body>
+</html>
