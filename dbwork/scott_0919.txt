@@ -1,0 +1,46 @@
+-- scott 연습용 테이블로 조회 연습하기
+select * from emp; -- 전체 테이블의 데이터를 조회
+select * from emp order by ename asc; -- ename의 오름차순으로 조회(asc는 생략해도 된다.)
+select * from emp order by ename desc; -- ename의 내림차순으로 조회 ( desc는 생략안됨 )
+select empno, ename from emp; --일부 컬럼만 조회
+select job from emp; --job 컬럼만 조회
+
+-- 같은 직업일 경우 한번씩만 출력 오름차순 정렬 조회
+select DISTINCT job from emp order by job; -- 컬럼이 한개이므로 job대신 1이라고 써도 된다.
+--sal 이 3000이상인것만 조회
+select * from emp where sal>=3000;
+--sal 이 2000이상이면서 deptno 가 20인사람 조회(and) - ename, sal, deptno
+select ename, sal, deptno from emp where sal>=2000 and deptno=20;
+
+-- SMITH 의 데이터 조회
+select * from emp where ename = 'SMITH';
+
+-- A로 시작하는 사람들만 따로 조회
+select * from emp where ename like 'A%';  -- % : 모든.. 글자 길이 상관없음
+
+-- 두번째 글자가 A인 사람만 조회
+select * from emp where ename like '_A%';  -- _ (언더바)는 임의의 한글자를 의미한다
+
+-- 세번째 글자가 A인 사람만 조회
+select * from emp where ename like '__A%';
+
+-- S로 시작하거나 J로 시작하는 모든 사람 조회
+select * from emp where ename like 'S%' or ename like 'J%';
+
+-- sal이 2천 이상이 사람중에 S로 시작하는 사람 조회
+select * from emp where sal>=2000 and ename like 'S%';
+
+
+--GROUP BY
+-- job 직업별로 일단 인원수를 구햅자
+select job 직업, count(*) 인원수 from emp group by job;
+--위의 결과를 직업의 오름차순으로 출력
+select job 직업, count(*) 인원수 from emp group by job order by 직업; -- 행의 명으로 오름차순 정렬
+select job 직업, count(*) 인원수 from emp group by job order by 1; -- 행위치로 오름차순 정렬 (1번째 위치)
+
+-- 인원수의 오름차순으로 출력
+select job 직업, count(*) 인원수 from emp group by job order by 인원수; -- 행의 명으로 오름차순 정렬
+select job 직업, count(*) 인원수 from emp group by job order by 2; -- 행위치로 오름차순 정렬 (2번쨰 위치)
+
+테이블 스페이수이이
+alter user angel default TABLESPACE users quota unlimited on users;
