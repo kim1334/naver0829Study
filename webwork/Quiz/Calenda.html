@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" href="calendaStyle.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<script>
+    window.onload = function () {
+
+        let yearInput = $("#year");
+        let monthInput = $("#month");
+        yearInput.on("input", checkInput);
+        monthInput.on("input", checkInput);
+
+        viewCalendar(); // 달력 호출
+        todayColor(); // 당일 표시해주는 함수 출력
+
+        // 버튼 클릭시 유효하지 않을 경우 경고창
+        $("#button-load").click(function () {
+
+            let inputYear = Number($("#year").val());
+            let inputMonth = Number($("#month").val());
+
+            if (isNaN(inputYear) || isNaN(inputMonth)
+                || inputYear < 1 || inputYear > 2400
+                || inputMonth < 1 || inputMonth > 12) {
+                alert("올바른 연도와 월을 입력하세요")
+            } else {
+                year = inputYear;
+                month = inputMonth;
+                viewCalendar();
+            }
+
+        });
+
+
+        // 연도 인풋태그에 유효하지 않은 값 입력시 경고
+        $("#year").on("input", function (event) {
+
+            let inputField = $(this);
+            let inputValue = $(this).val();
+
+            inputField.next().next().next().next().remove();
+
+            if (isNaN(inputValue)) {
+
+                inputField.css("border", "1px solid red");
+                inputField.next().next().next().after('<small class="warning-text" style="color: red;">숫자만 입력하세요.</small>');
+
+            } else if (inputValue < 1 || inputValue > 2400) {
+                inputField.css("border", "1px solid red");
+                inputField.next().next().next().after('<small class="warning-text" style="color: red;">1에서 2400 사이의 값을 입력하세요.</small>');
+
+            } else
+                inputField.css("border", "1px solid gray");
+        });
+
+        // 연도 인풋 태그 포커스 이동시 기존 경고 삭제
+        $("#year").on("blur", function (event) {
+            let inputField = $(this);
+            inputField.css("border", "1px solid gray");
+            inputField.next().next().next().next().remove();
+        });
+
+        // 월 입력 인풋태그에 유효하지 않은 값 입력시 경고
+        $("#month").on("input", function (event) {
+
+            let inputField = $(this);
+            let inputValue = $(this).val();
+
+            inputField.next().next().remove();
+
+            if (isNaN(inputValue)) {
+
+                inputField.css("border", "1px solid red");
+                inputField.next().after('<small class="warning-text" style="color: red;">숫자만 입력하세요.</small>');
+
+            } else if (inputValue < 1 || inputValue > 12) {
+                inputField.css("border", "1px solid red");
+                inputField.next().after('<small class="warning-text" style="color: red;">1에서 12 사이의 값을 입력하세요.</small>');
+
+            } else
+                inputField.css("border", "1px solid gray");
+        });
+
+        // 월 인풋 태그 포커스 이동시 경고 삭제
+        $("#month").on("blur", function (event) {
+            let inputField = $(this);
+            inputField.css("border", "1px solid gray");
+            inputField.next().next().remove();
+        });
+
+        function checkInput(event) {
+            let inputField = event.target;
+            let inputValue = inputField.value;
+
+            // 입력값이 숫자가 아니거나 범위를 벗어나는 경우
+            if (isNaN(inputValue) || inputValue < 1 || inputValue > 2400) {
+                // 입력 필드의 보더를 빨간색으로 변경
+                inputField.style.border = "2px solid red";
+            } else {
+                // 유효한 값인 경우 보더 초기화
+                inputField.style.border = "1px solid gray";
+            }
+        }
+
+        $("#year, #month").on("keydown", function (event) {
+            if (event.key === "Enter") {
+                $("#button-load").click();
+            }
+        });
+
+        //연도 이전버튼 누를시 월 변경 이벤트
+        $("#btn-prev").click(function () {
+            if (month === 1) {
+                year -= 1;
+                month = 12;
+            } else {
+                month -= 1;
+            }
+            viewCalendar();
+        });
+
+        //연도 다음 버튼 누를 시 월 변경 이벤트
+        $("#btn-next").click(function () {
+            if (month === 12) {
+                year += 1;
+                month = 1;
+            } else {
+                month += 1;
+            }
+            viewCalendar();
+        });
+
+        console.log(year, month);
+    };
+
+    // 현재 일에 맞춰 백그라운드 컬러 넣어주는 이벤트
+    function todayColor() {
+        let currentDate = new Date();
+        let currentDay = currentDate.getDate();
+
+        // 각 날짜 셀에 대한 클래스 "date-cell"을 사용한다고 가정
+        $(".day").each(function () {
+            let cellDay = parseInt($(this).text(), 10);
+            if (currentDay === cellDay) {
+                // 현재 날짜에 해당하는 경우, id를 동적으로 부여
+                $(this).attr("id", "today");
+                $(this).css("background-color", "rgba(110, 170, 240, 0.4)");
+            }
+        });
+    }
+
+    // 캘린더 출력 이벤트 
+    function viewCalendar() {
+
+        let date2 = new Date(year, month - 1, 1);
+        let weekday = date2.getDay();
+
+        //해당 연도 월 몇일까지 있는지 확인
+        let dayEnd;
+        switch (month) {
+            case 2:
+                dayEnd = (year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0) ? 29 : 28;
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                dayEnd = 30;
+                break;
+            default:
+                dayEnd = 31;
+        }
+
+        let s =
+            `<table class = "table table-bordered tal">
+            <thead class="head">
+                <tr>
+                    <th style = "color:red;">일</th><th>월</th>
+                    <th>화</th><th>수</th>
+                    <th>목</th><th>금</th>
+                    <th style = "color:blue;">토</th>
+                </tr>
+            </thead>
+            <tbody>
+        `;
+
+        s += "<tr>";
+        for (let i = 1; i <= weekday; i++) {
+            s += "<td></td>";
+        }
+
+        // 1부터 끝나는 날까지 출력
+        for (let i = 1; i <= dayEnd; i++) {
+            ++weekday;
+            //7의 배수일 경우에는 tr을 닫는다
+            s += `<td class = "day" style="color:${weekday % 7 == 1 ? 'red' : weekday % 7 == 0 ? 'blue' : 'black'}">${i}</td>`;
+            if (weekday % 7 == 0 && i < dayEnd) {
+                s += `</tr><tr>`;
+            } else if (weekday % 7 == 0 && i == dayEnd) {
+                s += "</tr>";
+            }
+        }
+
+        // 나머지 칸 병합.
+        if (weekday % 7 != 0) {
+            while (true) {
+                weekday++;
+                if (weekday % 7 == 0)
+                    s += `<td rowspan="${7 - (weekday % 7)}"></td>`;
+                break;
+            }
+            s += "</tr>";
+        }
+        s += "</tbody></table>";
+
+        let title = `${year}년 ${month}월`;
+        document.querySelector("#current-date").innerHTML = title;
+        document.querySelector("#calendar").innerHTML = s;
+    }
+</script>
+
+<body>
+    <script>
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+    </script>
+    <div class="container">
+        <div class="input-group inputText">
+            <span class="input-group-text">연도</span>
+            <input type="text" aria-label="First name" class="form-control cl1" id="year">
+            <span class="input-group-text">월</span>
+            <input type="text" aria-label="Last name" class="form-control cl2" id="month">
+            <button class="btn btn-outline-secondary" type="button" id="button-load">달력 불러오기</button>
+        </div>
+        <br>
+        <div class="calendar-title">
+            <div class="btn-group btn" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-secondary" id="btn-prev"><</button>
+                        <span class="btn btn-secondary" id="current-date" style="font-weight: bold;"></span>
+                        <button type="button" class="btn btn-secondary" id="btn-next">></button>
+            </div>
+            <div id="calendar"></div>
+        </div>
+    </div>
+</body>
+
+</html>

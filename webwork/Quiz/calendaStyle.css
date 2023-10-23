@@ -1,0 +1,36 @@
+table {
+    text-align: center;
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+
+div.inputText {
+    margin-top: 50px;
+    width: 350px;
+
+}
+
+div.btn {
+    margin-left: 65px;
+}
+
+.head th {
+    font-size: 12px;
+    background-color: rgb(29, 218, 239);
+    height: 10px;
+}
+
+.tal {
+    width: 350px;
+    height: 350px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+tbody {
+    text-align: center;
+}
+
+.container {
+    margin-left: 100px;
+}
